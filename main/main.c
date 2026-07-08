@@ -38,13 +38,16 @@ static void hw_init(void)
 }
 
 #ifdef CONFIG_FIT_BOOT
+
+void boot_kernel_fit(void* fit);
+
 void fit_main(void* fit)
 {
 	hw_init();
 
 	printk(KERN_INFO, "Booting using FIT image at 0x%p\n", fit);
 
-	//boot_kernel_fit(fit);
+	boot_kernel_fit(fit);
 
 	// todo: reset the board?
 	printk(KERN_EMERG, "Something wrong happened, we shouldn't be here. Hanging....\n");
